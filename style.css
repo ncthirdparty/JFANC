@@ -60,17 +60,6 @@ ul {
     width: 100%;
 }
 
-#platform {
-    padding-right: 70px;
-    padding-left: 70px;
-    color: #003e60;
-    -webkit-text-stroke: rgba(255, 255, 255, 0.5);
-    -webkit-text-stroke-width: 4px;
-    font-weight: bold;
-    paint-order: stroke fill;
-    font-family:Impact, Arial, Helvetica, sans-serif;
-}
-
 a {
     -webkit-text-fill-color: #f86016;
     -webkit-text-stroke: rgba(255, 255, 255, 0.5);
