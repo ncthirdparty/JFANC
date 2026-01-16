@@ -77,10 +77,6 @@ a {
     background-color: #f8f9fa;
 }
 
-.fix-stroke{
-    paint-order: stroke fill;
-}
-
 #row-2{
     background-color: #003e60;
     width: 100%;
