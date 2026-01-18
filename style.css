@@ -52,7 +52,7 @@ ul {
     padding-left: 70px;
     color: #000000;
     -webkit-text-stroke: rgba(255, 255, 255, 0.5);
-    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-width: 3px;
     paint-order: stroke fill;
     font-family:Impact, Arial, Helvetica, sans-serif;
     width: 100%;
