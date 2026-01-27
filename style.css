@@ -85,3 +85,7 @@ a {
     background-color: #808080;
     row-gap: 0px;
 }
+
+.navbar-nav{
+    border-right: 0;
+}
