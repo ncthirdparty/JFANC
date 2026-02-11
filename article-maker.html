@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News Article Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            max-width: 700px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #preview {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        #output {
+            white-space: pre-wrap;
+            background: #f4f4f4;
+            padding: 15px;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Create a News Article</h1>
+
+<label>Article Title:</label>
+<input type="text" id="titleInput" placeholder="Enter article title">
+
+<label>Description:</label>
+<textarea id="descInput" rows="6" placeholder="Enter article text"></textarea>
+
+<button onclick="generateArticle()">Generate Article</button>
+
+<div id="preview"></div>
+
+<h3>Copy This HTML:</h3>
+<div id="output"></div>
+
+<script>
+function generateArticle() {
+    const title = document.getElementById("titleInput").value;
+    const desc = document.getElementById("descInput").value;
+
+    const articleHTML = `
+<article class="news-article">
+    <h2>${title}</h2>
+    <p>${desc}</p>
+</article>
+`;
+
+    document.getElementById("preview").innerHTML = articleHTML;
+    document.getElementById("output").textContent = articleHTML;
+}
+</script>
+
+</body>
+</html>
