@@ -55,11 +55,37 @@
 <script>
 function generateArticle() {
     const title = document.getElementById("titleInput").value;
-    const desc = document.getElementById("descInput").value;
+    const desc  = document.getElementById("descInput").value;
+
+    // Get current date/time in Eastern Time (EST/EDT)
+    const now = new Date();
+    const estTime = now.toLocaleString('en-US', {
+        timeZone: 'America/New_York',
+        weekday: 'long',           // e.g. Wednesday
+        year: 'numeric',
+        month: 'long',             // e.g. February
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true               // 12-hour format with AM/PM
+    });
+
+    // Optional: shorter version → "February 11, 2026 4:25 PM EST"
+    // const estShort = now.toLocaleString('en-US', {
+    //     timeZone: 'America/New_York',
+    //     month: 'long',
+    //     day: 'numeric',
+    //     year: 'numeric',
+    //     hour: 'numeric',
+    //     minute: '2-digit',
+    //     hour12: true,
+    //     timeZoneName: 'short'
+    // });
 
     const articleHTML = `
 <article class="news-article">
     <h2>${title}</h2>
+    <p class="byline">Published: ${estTime}</p>
     <p>${desc}</p>
 </article>
 `;
