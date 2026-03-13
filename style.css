@@ -75,6 +75,11 @@ a {
     background-color: #f8f9fa;
 }
 
+#row-3{
+    background-color: #99643d;
+    row-gap: 0px;
+}
+
 #row-2{
     background-color: #ffffff;
     row-gap: 0px;
