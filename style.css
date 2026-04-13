@@ -93,3 +93,11 @@ a {
 .navbar-nav{
     padding-right: 0;
 }
+
+b {
+    -webkit-text-fill-color: #000000;
+    -webkit-text-stroke: rgba(255, 255, 255, 0.5);
+    -webkit-text-stroke-width: 2px;
+    font-weight: bold;
+    paint-order: stroke fill;
+}
