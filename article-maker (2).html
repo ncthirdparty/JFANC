@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News Article Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            max-width: 800px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #preview {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        #preview p {
+            margin: 0 0 1em 0;
+        }
+        #preview p:last-child {
+            margin-bottom: 0;
+        }
+        #output {
+            white-space: pre-wrap;
+            background: #f4f4f4;
+            padding: 15px;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Create a News Article</h1>
+
+<label>Article Title:</label>
+<input type="text" id="titleInput" placeholder="Enter article title">
+
+<label>Description (use blank lines between paragraphs):</label>
+<textarea id="descInput" rows="8" placeholder="Enter article text.&#10;&#10;Separate paragraphs with a blank line (press Enter twice)."></textarea>
+
+<button onclick="generateArticle()">Generate Article</button>
+
+<div id="preview"></div>
+
+<h3>Copy This HTML:</h3>
+<div id="output"></div>
+
+<script>
+function generateArticle() {
+    const title = document.getElementById("titleInput").value;
+    const desc  = document.getElementById("descInput").value;
+
+    // Get current date/time in Eastern Time (EST/EDT)
+    const now = new Date();
+    const estTime = now.toLocaleString('en-US', {
+        timeZone: 'America/New_York',
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+    });
+
+    // Turn the description into real paragraphs.
+    // - Blank line (double Enter) = new paragraph
+    // - Single newlines inside a paragraph are kept as <br>
+    const paragraphs = desc
+        .split(/\n\s*\n/)          // split on one or more blank lines
+        .map(block => block.trim())
+        .filter(block => block.length > 0)
+        .map(block => {
+            // preserve single line breaks inside the paragraph
+            const withBreaks = block.replace(/\n/g, '<br>');
+            return `<p>${withBreaks}</p>`;
+        })
+        .join('\n');
+
+    const articleHTML = `
+<article class="news-article">
+    <h2>${title}</h2>
+    <p class="byline">Published: ${estTime}</p>
+    ${paragraphs}
+</article>
+`.trim();
+
+    document.getElementById("preview").innerHTML = articleHTML;
+    document.getElementById("output").textContent = articleHTML;
+}
+</script>
+
+</body>
+</html>
